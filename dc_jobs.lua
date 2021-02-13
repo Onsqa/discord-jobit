@@ -37,13 +37,16 @@ end)
 
 
 function laheta(message)
-local DiscordWebHook ="Webbihuukki"
+local DiscordWebHook ="webhuuk"
 local embeds = {
 	{
 		["title"]="Työntekijät",
 		["type"]="rich",
 		["color"] = 2061822,
 		["description"] = "Pelaajia: " .. pelaaja .. "\nEnsihoitajia: " .. lanssi .. "\nPoliiseja: " .. poliisi .. "\nTakseja: " .. taksi .. "\nMekaanikkoja: " .. meksu,
+		["footer"]=  {
+			["text"] =  "Paskaa koodia Onsqalta",
+		},
 	}
 }
 
