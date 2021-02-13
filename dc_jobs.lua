@@ -45,7 +45,7 @@ local embeds = {
 		["color"] = 2061822,
 		["description"] = "Pelaajia: " .. pelaaja .. "\nEnsihoitajia: " .. lanssi .. "\nPoliiseja: " .. poliisi .. "\nTakseja: " .. taksi .. "\nMekaanikkoja: " .. meksu,
 		["footer"]=  {
-			["text"] =  "Paskaa koodia Onsqalta",
+			["text"] =  "Tarkastaja Petteri",
 		},
 	}
 }
