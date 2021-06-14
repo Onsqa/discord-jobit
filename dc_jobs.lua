@@ -31,13 +31,14 @@ Citizen.CreateThread(function()
 		end
 	end
 		laheta(poliisi,lanssi,taksi,meksu,pelaaja)
-		Wait(600000) -- Sopivasti
+		Wait(30000) -- 30 sec
 	end
 end)
 
 
 function laheta(message)
-local DiscordWebHook ="webhuuk"
+local DiscordWebHook = ""
+local messageId = ""
 local embeds = {
 	{
 		["title"]="Työntekijät",
@@ -45,11 +46,15 @@ local embeds = {
 		["color"] = 2061822,
 		["description"] = "Pelaajia: " .. pelaaja .. "\nEnsihoitajia: " .. lanssi .. "\nPoliiseja: " .. poliisi .. "\nTakseja: " .. taksi .. "\nMekaanikkoja: " .. meksu,
 		["footer"]=  {
-			["text"] =  "Tarkastaja Petteri",
+			["text"] =  "Tarkastaja Petteri | " .. os.date('%d.%m.%Y klo %H:%M:%S'),
 		},
 	}
 }
 
 	if message == nil or message == '' then return FALSE end
-	PerformHttpRequest(DiscordWebHook, function(err, text, headers) end, 'POST', json.encode({ username = "Työnvalvoja", embeds = embeds}), { ['Content-Type'] = 'application/json' })
+	if messageId ~= nil and messageId ~= '' then
+		PerformHttpRequest(DiscordWebHook..'/messages/'..messageId, function(err, text, headers) end, 'PATCH', json.encode({ username = "Työnvalvoja", embeds = embeds}), { ['Content-Type'] = 'application/json' })
+	else
+		PerformHttpRequest(DiscordWebHook, function(err, text, headers) end, 'POST', json.encode({ username = "Työnvalvoja", embeds = embeds}), { ['Content-Type'] = 'application/json' })
+	end
 end
